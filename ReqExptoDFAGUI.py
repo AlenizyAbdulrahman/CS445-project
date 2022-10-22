@@ -8,14 +8,14 @@ import tkinter as tk
 from tkinter import messagebox
 from nbformat import write
 import login
+import Regex2DFA
 
-
-class ReqtoNFA(Tk):
+class ReqtoDFA(Tk):
     def __init__(self):
 
         #create screen layout
         super().__init__()
-        self.geometry("650x600")
+        self.geometry("1200x800")
         self.title('Main page')
         self.config(bg='#669BBC')
         self.resizable(True,True)
@@ -23,27 +23,35 @@ class ReqtoNFA(Tk):
         frame.place(x=120,y=50,width=1000,height=600)
 
         #create buttones
-        headline = Label(frame, text='Convert Reqular Expression to NFA.', fg='white',bg='#669BBC',font=('Courier',30,'bold'),pady=0).place(x=120,y=0)
+        headline = Label(frame, text='Convert Reqular Expression to DFA.', fg='white',bg='#669BBC',font=('Courier',30,'bold'),pady=0).place(x=120,y=0)
 
         btn_back = Button(self,text='Back',bg='#F3A712',bd=0,font=('Courier',10),command=self.back_btn).place(x=20,y=20,width=100,height=50)
         # btn_reqtodfa = Button(self,text='Reqular Expression to DFA',bg='#F3A712',bd=0,font=('Courier',10),).place(x=350,y=200,width=500,height=50)
         # btn_reqtonfa = Button(self,text='Reqular Expression to NFA',bg='#F3A712',bd=0,font=('Courier',10),).place(x=350,y=300,width=500,height=50)
         # btn_nfatodfa = Button(self,text='NFA to DFA',bg='#F3A712',bd=0,font=('Courier',10),).place(x=350,y=400,width=500,height=50)
 
-
+        self.text = StringVar()
         txt_reqexp = Label(frame,text="Reqular Expression: ",fg='white',bg='#669BBC',font=('Courier',18),pady=20).place(x=20,y=120)
-        self.reqexp = Entry(frame,font=('Courier',18,'bold'))
+        self.reqexp = Entry(frame,font=('Courier',18,'bold'),textvariable=self.text)
         self.reqexp.place(x=300,y=130,width=500,height=45)
-        btn_build = Button(frame,text='Build',bg='#F3A712',bd=0,font=('Courier',10),).place(x=820,y=130,width=120,height=45)
+        btn_build = Button(frame,text='Build',bg='#F3A712',bd=0,font=('Courier',10),command=self.getresult).place(x=820,y=130,width=120,height=45)
+
+        self.resarea = Text(frame,width=100,height=200,font=('Courier',18))
+        self.resarea.pack()
+        self.resarea.place(x=100,y=250)
 
 
         #back to previous page
     def back_btn(self):
-        login.mainpage("")
+        login.mainpage()
         self.destroy()
+    def getresult(self):
+        x = Regex2DFA.getresult(self.text.get())
+        self.resarea.delete("1.0","end")
+        self.resarea.insert(END,x)
 
 
 if __name__ == "__main__":
-    obj = ReqtoNFA()
+    obj = ReqtoDFA()
     # obj = mainpage("ss")
     obj.mainloop()
