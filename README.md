@@ -4,33 +4,33 @@
 
  
 PROGRAM → STMTS <br>
-STMTS → STMT| STMT ; STMTS
-STMT → id = EXPR
-EXPR → EXPR + TERM | EXPR - TERM | TERM
-TERM → TERM * FACTOR | TERM / FACTOR | FACTOR
+STMTS → STMT| STMT ; STMTS <br>
+STMT → id = EXPR <br>
+EXPR → EXPR + TERM | EXPR - TERM | TERM <br>
+TERM → TERM * FACTOR | TERM / FACTOR | FACTOR <br>
 FACTOR → ( EXPR ) | id | integer
 
 
 ## After modifying the grammar to add the power operator (^) and unary sign operators + and -:
 
-PROGRAM -> STMTS
-STMTS -> STMT | STMT ; STMTS
-STMT -> id = EXPR
-EXPR -> EXPR + TERM | EXPR - TERM | TERM
-TERM -> TERM * CURR | TERM / CURR | CURR
-CURR -> TEMP ^ CURR | TEMP
-TEMP -> ++ FACTOR | -- FACTOR | FACTOR
-FACTOR -> ( EXPR ) | id | integer
+PROGRAM -> STMTS <br>
+STMTS -> STMT | STMT ; STMTS <br>
+STMT -> id = EXPR <br>
+EXPR -> EXPR + TERM | EXPR - TERM | TERM <br>
+TERM -> TERM * CURR | TERM / CURR | CURR <br>
+CURR -> TEMP ^ CURR | TEMP <br>
+TEMP -> ++ FACTOR | -- FACTOR | FACTOR <br>
+FACTOR -> ( EXPR ) | id | integer <br>
 
 ## After elimination of left-recursion:
 
-PROGRAM -> STMTS
-STMTS -> STMT | STMT ; STMTS
-STMT -> id = EXPR
-EXPR -> TERM EXPR'
-TERM -> FACTOR TERM'
-FACTOR -> CURR ^ FACTOR | CURR
-CURR -> ++ TEMP | -- TEMP | TEMP
-TEMP -> ( EXPR ) | id | integer
-EXPR' -> + TERM EXPR' | - TERM EXPR' | ϵ
-TERM' -> * FACTOR TERM' | / FACTOR TERM' | ϵ
+PROGRAM -> STMTS <br>
+STMTS -> STMT | STMT ; STMTS <br>
+STMT -> id = EXPR <br>
+EXPR -> TERM EXPR' <br>
+TERM -> FACTOR TERM' <br>
+FACTOR -> CURR ^ FACTOR | CURR <br>
+CURR -> ++ TEMP | -- TEMP | TEMP <br>
+TEMP -> ( EXPR ) | id | integer <br>
+EXPR' -> + TERM EXPR' | - TERM EXPR' | ϵ <br>
+TERM' -> * FACTOR TERM' | / FACTOR TERM' | ϵ <br>
