@@ -2,7 +2,7 @@
 
 ## This is grammar before making it LL (1):
 
-PROGRAM → STMTS
+PROGRAM → STMTS \n
 STMTS → STMT| STMT ; STMTS
 STMT → id = EXPR
 EXPR → EXPR + TERM | EXPR - TERM | TERM
