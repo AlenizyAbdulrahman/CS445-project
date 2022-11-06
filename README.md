@@ -34,3 +34,18 @@ CURR -> ++ TEMP | -- TEMP | TEMP <br>
 TEMP -> ( EXPR ) | id | integer <br>
 EXPR' -> + TERM EXPR' | - TERM EXPR' | ϵ <br>
 TERM' -> * FACTOR TERM' | / FACTOR TERM' | ϵ <br>
+
+## After left-factoring:
+
+PROGRAM -> STMTS <br>
+STMTS -> STMT STMTS' <br>
+STMT -> id = EXPR <br>
+EXPR -> TERM EXPR' <br>
+TERM -> FACTOR TERM' <br>
+FACTOR -> CURR FACTOR' <br>
+CURR -> ++ TEMP | -- TEMP | TEMP <br>
+TEMP -> ( EXPR ) | id | integer <br>
+EXPR' -> + TERM EXPR' | - TERM EXPR' | ϵ <br>
+TERM' -> * FACTOR TERM' | / FACTOR TERM' | ϵ <br>
+STMTS' -> ϵ | ; STMTS <br>
+FACTOR' -> ^ FACTOR | ϵ <br>
