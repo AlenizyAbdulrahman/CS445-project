@@ -11,8 +11,7 @@ TERM → TERM * FACTOR | TERM / FACTOR | FACTOR <br>
 FACTOR → ( EXPR ) | id | integer
 
 
-## After modifying the grammar to add the power operator (^) and unary sign operators 
-(+ and -):
+## After modifying the grammar to add the power operator (^) and unary sign operators (+ and -):
 
 PROGRAM -> STMTS <br>
 STMTS -> STMT | STMT ; STMTS <br>
