@@ -11,7 +11,7 @@ TERM → TERM * FACTOR | TERM / FACTOR | FACTOR <br>
 FACTOR → ( EXPR ) | id | integer
 
 
-## After modifying the grammar to add the power operator (^) and unary sign operators (+, -):
+## Mmodifying the grammar to add the power operator (^) and unary sign operators (+, -):
 
 PROGRAM -> STMTS <br>
 STMTS -> STMT | STMT ; STMTS <br>
@@ -22,7 +22,7 @@ CURR -> TEMP ^ CURR | TEMP <br>
 TEMP -> ++ FACTOR | -- FACTOR | FACTOR <br>
 FACTOR -> ( EXPR ) | id | integer <br>
 
-## After elimination of left-recursion:
+## Left-Recursion:
 
 PROGRAM -> STMTS <br>
 STMTS -> STMT | STMT ; STMTS <br>
@@ -35,7 +35,7 @@ TEMP -> ( EXPR ) | id | integer <br>
 EXPR' -> + TERM EXPR' | - TERM EXPR' | ϵ <br>
 TERM' -> * FACTOR TERM' | / FACTOR TERM' | ϵ <br>
 
-## After left-factoring:
+## Left-Factoring:
 
 PROGRAM -> STMTS <br>
 STMTS -> STMT STMTS' <br>
