@@ -448,17 +448,5 @@ def getresult(x):
         return d
 
 
-# x = "a*bc123"
-# a = ""
-# for i in x:
-#     if i.isalpha():
-#         a += i
-# print(len(a))
-# print(a)
-# # Open a file with access mode 'a'
-# file_object = open('sample.txt', 'a')
-# file_object.truncate(0)
-# # Append 'hello' at the end of file
-# file_object.write(f'3\na\nd\nc\nadc')
-# # Close the file
-# file_object.close()
+
+# a = getresult('a+b')
