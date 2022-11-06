@@ -2,12 +2,14 @@
 
 ## This is grammar before making it LL (1):
 
-PROGRAM → STMTS \n
+<p>
+PROGRAM → STMTS 
 STMTS → STMT| STMT ; STMTS
 STMT → id = EXPR
 EXPR → EXPR + TERM | EXPR - TERM | TERM
 TERM → TERM * FACTOR | TERM / FACTOR | FACTOR
 FACTOR → ( EXPR ) | id | integer
+</p>
 
 ## After modifying the grammar to add the power operator (^) and unary sign operators + and -:
 
